@@ -37,6 +37,9 @@ def next_turn(snake,food):
     snake.coordinates.insert(0,(x,y))
     square=canvas.create_rectangle(x,y,x+SPACE_SIZE,y+SPACE_SIZE,fill=SNAKE_COLOR)
     snake.squares.insert(0,square)
+    del snake.coordinates[-1]
+    canvas.delete(snake.squares[-1])
+    del snake.squares[-1]
     window.after(SPEED,next_turn,snake,food)
 def change_dir(new_dir):
     pass
