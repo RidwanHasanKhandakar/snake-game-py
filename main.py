@@ -39,7 +39,14 @@ def next_turn(snake,food):
         x-=SPACE_SIZE
     elif direction=="right":
         x+=SPACE_SIZE
-
+    if x<0:
+        x=GAME_WIDTH-SPACE_SIZE
+    elif x>=GAME_WIDTH:
+        x=0
+    elif y<0:
+        y=GAME_HEIGHT-SPACE_SIZE
+    elif y>=GAME_HEIGHT:
+        y=0
     snake.coordinates.insert(0,[x,y])
 
     square=canvas.create_rectangle(x,y,x+SPACE_SIZE,y+SPACE_SIZE,fill=SNAKE_COLOR,tag="snake")
