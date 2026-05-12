@@ -24,8 +24,20 @@ class Food:
         y=random.randint(0,(GAME_HEIGHT//SPACE_SIZE)-1)*SPACE_SIZE
         self.coordinates=[x,y]
         canvas.create_oval(x,y,x+SPACE_SIZE,y+SPACE_SIZE,fill=FOOD_COLOR,tag="food")
-def next_tuen():
-    pass
+def next_turn(snake,food):
+    x,y=snake.coordinates[0]
+    if dir=="up":
+        y-=SPACE_SIZE
+    elif dir=="down":
+        y+=SPACE_SIZE
+    elif dir=="left":
+        x-=SPACE_SIZE
+    elif dir=="right":
+        x+=SPACE_SIZE
+    snake.coordinates.insert(0,(x,y))
+    square=canvas.create_rectangle(x,y,x+SPACE_SIZE,y+SPACE_SIZE,fill=SNAKE_COLOR)
+    snake.squares.insert(0,square)
+    window.after(SPEED,next_turn,snake,food)
 def change_dir(new_dir):
     pass
 def check_coll():
@@ -51,4 +63,5 @@ y=int((screen_height/2)-(window_height/2))
 window.geometry(f"{window_width}x{window_height}+{x}+{y}")
 snake=Snake()
 food=Food()
+next_turn(snake,food)
 window.mainloop()
