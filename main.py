@@ -1,6 +1,6 @@
 from tkinter import*
 import random
-
+#Top Score 20 -> Shad1
 GAME_WIDTH=600
 GAME_HEIGHT=600
 SPEED=100
